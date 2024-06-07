@@ -37,8 +37,7 @@ python main.py
 
 ## Тестовые данные
 
-В папке `test` находятся тестовые данные. Вы можете загрузить их, и результат должен соответствовать следующему формату:
-Извините за это. Давайте попробуем вставить код таблицы в формате Markdown:
+The `test` folder contains test data. You can upload it and the output should match the following format:
 
 ```markdown
 |                     GROUP              | SKILLS             | EXPERIENCE IN YEARS | LAST USED |
