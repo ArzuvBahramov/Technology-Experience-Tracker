@@ -35,7 +35,7 @@ Run the main application:
 python main.py
 ```
 
-## Тестовые данные
+## Test Data
 
 The `test` folder contains test data. You can upload it and the output should match the following format:
 
