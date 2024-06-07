@@ -15,7 +15,7 @@ The project is divided into several modules to follow SOLID principles:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/tech-experience-tracker.git
+    https://github.com/ArzuvBahramov/Technology-Experience-Tracker.git
     ```
 
 2. Navigate to the project directory:
