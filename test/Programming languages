@@ -1,0 +1,22 @@
+Programming languages
+Java(8,11,17,21), Kotlin, Groovy.
+Back-end
+Spring (Boot, Cloud, Data, Security, WebFlux), Consul, OAuth2, Feign, WebSocket, REST, gRPC, Protobuf, JWT, RxJava, Reactor, Solr, Hibernate, ELK, Liquibase, Flyway, MapStruct, Swagger, JUnit, Mockito, Prometheus, Grafana, Gradle, Maven.
+Database management system
+PostgreSQL, MySQL, MongoDB, Redis, Oracle, Snowflake, DWH, Couchbase, Aerospike, Neo4j, Membase, Elasticsearch.
+Message Brokers
+Apache Kafka, Kafka Streams, Kafka AVRO, RabbitMQ.
+DevOps
+Docker, Docker-Compose, Docker Swarm, Lens, Kubernetes, Helm, JFrog Artifactory, Jenkins, BitBucket pipelines, GitLab CI/CD, SonarQube, Snyk.
+Cloud
+Azure(AKS, Monitor, VNet, Backup, DevOps).
+Application servers
+Apache Tomcat, Netty.
+Process Orchestrator
+Camunda, Zeebe.
+Source control systems
+Git, BitBucket, GitLab.
+Project management tools
+Jira, Confluence.
+IDE
+IntelliJ Idea, Eclipse.
