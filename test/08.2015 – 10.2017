@@ -1,14 +1,8 @@
-08.2015 – 10.2017
-Java, Groovy, Gradle, Spring(Boot, Data, Security, Cloud), gRPC, REST, Flyway, Feign, Hibernate, JWT, Consul, Traefik, Kafka, PostgreSQL, Redis, RabbitMQ, Swagger, JFrog Artifactory, Docker, Docker Compose, Mapstruct, Protobuf, Mockito, JUnit, Git, GitLab, Jenkins, Eclipse, Jira, Confluence.
-10.2017 – 08.2018
-Java, Kotlin, Spring (Boot, Data, Security, WebFlux), JWT, REST, WebSocket, Gradle, MongoDB, PostgreSQL, Netty, Docker, Docker Compose, Docker Swarm, Swagger, Liquibase, Kafka, Kafka Streams, Kafka AVRO, ELK, OAuth2, BitBucket, BitBucket pipelines, JFrog Artifactory, IntelliJ Idea, Jira, Confluence.
-08.2018 – 05.2019
-Java, Groovy, Gradle, Spring(Boot, Data, Security, Cloud), gRPC, REST, Flyway, Feign, Hibernate, JWT, Consul, Traefik, Kafka, PostgreSQL, Redis, RabbitMQ, Swagger, JFrog Artifactory, Docker, Docker Compose, Mapstruct, Protobuf, Mockito, JUnit, Git, GitLab, Jenkins, Eclipse, Jira, Confluence.
-05.2019 – 05.2020
-Java, Kotlin, Kafka, Kafka AVRO, Spring(Boot), Maven, Git, GitLab, GitLab CI/CD, Oracle, PostgreSQL, MySQL, Snowflake, DWH, IntelliJ Idea, Jira, Confluence.
-05.2020 – 03.2021
-Java, Spring(Boot, Cloud, WebFlux), Netty, Liquibase, MySQL, Couchbase, Aerospike, Neo4j, Membase, Redis, Kafka, Docker, Docker Compose, Kubernetes, Tomcat, RxJava, Reactor, Prometheus, Grafana, ELK, Maven, Git, GitLab, GitLab CI/CD, IntelliJ Idea, Jira, Confluence.
-01.2021 – 03.2022
-Java, Spring(Boot), Maven, Kafka, Hibernate, PostgreSQL, MySQL, Elasticsearch, Camunda, Zeebe, JFrog Artifactory, Git, Bitbucket, Lens, SonarQube, Snyk, Docker, Docker-Compose, Kubernetes, Helm, Azure(AKS, Monitor, VNet, Backup, DevOps), IntelliJ Idea, Jira, Confluence.
-03.2022 – 06.2024
-Java, Spring(Boot, Data), Hibernate, PostgreSQL, Solr, Git, GitLab, GitLab CI/CD, Maven, Docker, Docker Compose, Swagger, Eclipse, Jira, Confluence.
+03.2017 – 06.2018
+Java 8, Gradle, Spring (Boot, Core, Security, Data, Cloud), MongoDB, REST, Lombok, Swagger, Jenkins, GitHub, Junit, Mockito, JPA, SOAP, Docker, Docker-Compose, Git.
+06.2018 – 07.2019
+Java, Spring (Boot, Core, Security, Data, Cloud), JOOQ, Hibernate, AWS (EC2, RDS, S3, VPC, ELB, SNS, SQS, SES), Lombok, MapStruct, PostgreSQL, Gradle, REST, Swagger, Kubernetes, JUnit, Mockito, Wiremock, JPA, SOAP, Docker, Docker-Compose, Jenkins, Git, GItLab.
+07.2019 – 09.2022
+Java, Spring (Boot, Core, Security, Data, Cloud), Hibernate, REST, PostgreSQL, Liquibase, Maven, Kafka, IBM MQ, Camunda, Lombok, Log4j, Swagger, Bitbucket, Azure(AKS, SQL, Functions, Devops, Monitor), JUnit, Mockito, Nexus, JPA, SOAP, Docker, Docker-Compose, Jenkins, ​​Git.
+09.2022 – 06.2024
+Java, JavaScript, TypeScript, Spring (Boot, Core, Security, Data, Cloud), SOAP, REST, Camunda, Kafka , Hibernate, Angular, Angular Material, Electron, Jasmine, CSS, HTML, Kubernetes, Docker, Docker-Compose, Prometheus, Grafana, Junit, Mockito, Maven, Jenkins, Nexus, PostgreSQL, Git, GitHub.

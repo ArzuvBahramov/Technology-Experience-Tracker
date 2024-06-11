@@ -1,22 +1,22 @@
 Programming languages
-Java(8,11,17,21), Kotlin, Groovy.
-Back-end
-Spring (Boot, Cloud, Data, Security, WebFlux), Consul, OAuth2, Feign, WebSocket, REST, gRPC, Protobuf, JWT, RxJava, Reactor, Solr, Hibernate, ELK, Liquibase, Flyway, MapStruct, Swagger, JUnit, Mockito, Prometheus, Grafana, Gradle, Maven.
-Database management system
-PostgreSQL, MySQL, MongoDB, Redis, Oracle, Snowflake, DWH, Couchbase, Aerospike, Neo4j, Membase, Elasticsearch.
+Java, JavaScript, TypeScript.
+Process orchestrators
+Camunda.
+Backend
+Spring (Boot, Cloud, Data, Security), Hibernate, JPA, MapStruct, JOOQ, REST, SOAP, JUnit, Mockito, Maven, Gradle, Liquibase, Lombok, Swagger, Wiremock, Nexus, Log4j.
+Frontend
+Angular, Angular Material, Electron, Jasmine, CSS, HTML.
 Message Brokers
-Apache Kafka, Kafka Streams, Kafka AVRO, RabbitMQ.
-DevOps
-Docker, Docker-Compose, Docker Swarm, Lens, Kubernetes, Helm, JFrog Artifactory, Jenkins, BitBucket pipelines, GitLab CI/CD, SonarQube, Snyk.
+Apache Kafka, IBM MQ.
 Cloud
-Azure(AKS, Monitor, VNet, Backup, DevOps).
-Application servers
-Apache Tomcat, Netty.
-Process Orchestrator
-Camunda, Zeebe.
+Azure(AKS, SQL, Functions, Devops, Monitor), AWS (EC2, RDS, S3, VPC, ELB, SNS, SQS, SES).
+Contarization
+Docker, Docker-Compose,  Kubernetes.
+CI/CD
+Jenkins.
+Monitoring
+Prometheus, Grafana
+Database management systems
+PostgreSQL, MongoDB.
 Source control systems
-Git, BitBucket, GitLab.
-Project management tools
-Jira, Confluence.
-IDE
-IntelliJ Idea, Eclipse.
+Git, GitHub, GitLab, Bitbucket.

@@ -1,6 +1,11 @@
 import re
 from collections import OrderedDict
 
+def input_data(info):
+    line = input(info).strip()
+    ascii_text = line.encode("ascii", "ignore").decode()
+    return ascii_text
+
 def expand_technologies(groupName, tech_list):
     expanded_list = []
     for tech in tech_list:
@@ -19,25 +24,21 @@ def expand_technologies(groupName, tech_list):
 def create_groups_from_input():
     groups = OrderedDict()
 
-    current_group = None
-
     while True:
-        line = input("Введите название группы и ее технологии (для выхода введите 'exit'): ").strip()
+        line = input_data("Введите название группы (для выхода введите 'exit'): ")
         if line.lower() == 'exit':
             break
 
         if not line:
             continue
+
+        group = line
+        groups[group] = []
+        line = input_data("Введите для ${group} ее технологии, разделенные запятыми: ")
         
-        # Check if line is a group name (no comma, no parenthesis)
-        if ',' not in line and '(' not in line:
-            current_group = line
-            groups[current_group] = []
-        elif current_group:
-            # Extract individual technologies, considering versions in parentheses
-            technologies = re.split(r',\s*(?![^\(]*\))', line)
-            technologies = [tech.strip().lower().rstrip('.') for tech in technologies]
-            technologies = expand_technologies(current_group, technologies)
-            groups[current_group].extend(technologies)
+        original_technologies = [tech.strip().rstrip('.') for tech in re.split(r',\s*(?![^\(]*\))', line)]
+        technologies = expand_technologies(group, original_technologies)
+        technologies = [(tech.lower(), tech) for tech in technologies]
+        groups[group].extend(technologies)
 
     return groups

@@ -37,6 +37,7 @@ def group_technologies(tech_experience, groups):
     # Assign each technology to its group, comparing in lowercase
     for tech, data in tech_experience.items():
         for group, tech_list in groups.items():
+            tech_list = [item[0] for item in tech_list]
             if tech.lower() in map(str.lower, tech_list):
                 grouped_data[group].append({
                     'SKILLS': data['original_name'],
@@ -48,6 +49,7 @@ def group_technologies(tech_experience, groups):
 
 def sort_group_technologies(groups, grouped_data):
     for group, tech_list in groups.items():
+        tech_list = [item[0] for item in tech_list]
         grouped_data[group].sort(key=lambda x: tech_list.index(x['SKILLS'].lower().replace('-', ' ')))
 
     return grouped_data

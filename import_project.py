@@ -1,4 +1,8 @@
 import re
+def input_data(info):
+    line = input(info).strip()
+    ascii_text = line.encode("ascii", "ignore").decode()
+    return ascii_text
 
 def expand_technologies(tech_list):
     expanded_list = []
@@ -25,7 +29,7 @@ def input_technologies():
         start_date, end_date = period.split(' – ')
         periods.append((start_date, end_date))
 
-        technologies_input = input("Введите технологии, разделенные запятыми: ").strip()
+        technologies_input = input_data("Введите технологии, разделенные запятыми: ")
         technologies_split = re.split(r',\s*(?![^\(]*\))', technologies_input)
         technologies_strit = [tech.strip().rstrip('.') for tech in technologies_split]
         expanded_technologies = expand_technologies(technologies_strit)
