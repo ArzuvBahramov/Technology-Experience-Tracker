@@ -1,0 +1,26 @@
+<div style="height: 100vh;">
+  <mat-stepper style="height: 100%" headerPosition="bottom" #stepper (selectionChange)="onSelectionChange($event)">
+    <mat-step [stepControl]="importGroup">
+      <ng-template matStepLabel>Fill out group name & technologies</ng-template>
+      <app-import-group (outGroup)="setGroup($event)" [importGroup]="importGroup"/>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="importProjects">
+      <ng-template matStepLabel>Fill out projects</ng-template>
+      <app-import-project (outProject)="setProject($event)" [importProjects]="importProjects"/>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
