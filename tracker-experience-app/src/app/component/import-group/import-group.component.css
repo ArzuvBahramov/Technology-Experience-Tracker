@@ -1,0 +1,22 @@
+.add-button-row {
+  height: 52px;
+}
+
+.mat-card-class {
+  display: table-cell;
+  min-width: 350px;
+  padding: 20px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.mat-textarea {
+  min-height: 200px;
+}
+
+.mat-content {
+  width: 100%;
+  height: 100%;
+}
