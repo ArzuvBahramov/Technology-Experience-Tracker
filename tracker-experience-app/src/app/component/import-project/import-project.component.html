@@ -20,9 +20,16 @@
           </div>
         </section>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-button class="add-button-row" type="submit">ADD</button>
-      </mat-card-actions>
+      <div style="display: flex">
+        <mat-card-actions>
+          <button mat-button class="add-button-row" type="submit">ADD</button>
+        </mat-card-actions>
+        <mat-card-actions style="flex: 1">
+          <button mat-fab extended="true" class="add-button-row" type="button" (click)="removeAll()">
+            <mat-icon>delete</mat-icon>REMOVE ALL
+          </button>
+        </mat-card-actions>
+      </div>
     </form>
   </mat-card>
   <mat-card style="flex: 1;  height: 80vh; overflow-y: auto;">

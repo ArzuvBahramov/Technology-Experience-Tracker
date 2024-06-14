@@ -58,4 +58,9 @@ export class ImportProjectComponent implements OnInit{
       this.outProject.emit(this.projects);
     }
   }
+
+  removeAll() {
+    this.projects = [];
+    this.outProject.emit(this.projects);
+  }
 }
