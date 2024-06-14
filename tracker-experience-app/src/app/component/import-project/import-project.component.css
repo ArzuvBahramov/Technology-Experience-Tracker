@@ -1,0 +1,29 @@
+.add-button-row {
+  height: 52px;
+}
+
+.mat-card-class {
+  display: table-cell;
+  min-width: 350px;
+  min-height: 400px;
+  padding: 20px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.mat-textarea {
+  min-height: 200px;
+}
+
+.mat-content {
+  width: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #b6741b;
+}
+
+.mat-textarea {
+  min-height: 200px;
+}
