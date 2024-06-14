@@ -33,7 +33,7 @@ ipcMain.on('run-python', (event, arg) => {
     console.log('message: ' + arg);
     let options = {
         mode: 'text',
-        pythonPath: 'python3',
+        pythonPath: __dirname + '/script/venv/bin/python3',
         pythonOptions: ['-u'], // get print results in real-time
         scriptPath: __dirname + '/script/',
         args: [arg]
