@@ -47,13 +47,20 @@ import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocom
 import {MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious} from "@angular/material/stepper";
 import {MatDivider} from "@angular/material/divider";
 import {MatList, MatListItem, MatListItemTitle} from "@angular/material/list";
+import { ImportGroupsComponent } from './component/dialogs/import-groups/import-groups.component';
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import { TechnologyComponent } from './component/dialogs/technology/technology.component';
+import { ProjectComponent } from './component/dialogs/project/project.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImportGroupComponent,
     ImportProjectComponent,
-    WindowComponent
+    WindowComponent,
+    ImportGroupsComponent,
+    TechnologyComponent,
+    ProjectComponent
   ],
   imports: [
     HttpClientModule,
@@ -104,7 +111,11 @@ import {MatList, MatListItem, MatListItemTitle} from "@angular/material/list";
     MatCardActions,
     MatList,
     MatListItem,
-    MatListItemTitle
+    MatListItemTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle
   ],
   providers: [
     provideClientHydration(),

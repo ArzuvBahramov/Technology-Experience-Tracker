@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Input all technologies</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Group name, & technologies</mat-label>
+    <textarea matInput [(ngModel)]="technologies" style="min-height: 500px; min-width: 500px"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="technologies()" cdkFocusInitial>Add all</button>
+</mat-dialog-actions>
