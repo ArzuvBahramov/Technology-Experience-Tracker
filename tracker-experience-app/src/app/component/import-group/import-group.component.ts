@@ -52,6 +52,8 @@ export class ImportGroupComponent implements OnInit{
     const technologies = group.technologies;
     const name = group.name
     const dialogRef = this.dialog.open(EditTechnologyComponent, {
+      width: '600px',
+      height: '500px',
       data: {name: name, technologies: technologies},
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -74,6 +76,8 @@ export class ImportGroupComponent implements OnInit{
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ImportGroupsComponent, {
+      width: '600px',
+      height: '500px',
       data: {technologies: this.technologies()},
     });
 
