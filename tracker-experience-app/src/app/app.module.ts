@@ -51,6 +51,7 @@ import { ImportGroupsComponent } from './component/dialogs/import-groups/import-
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import { EditTechnologyComponent } from './component/dialogs/edit-technology/edit-technology.component';
 import { EditProjectComponent } from './component/dialogs/edit-project/edit-project.component';
+import { AppErrorDialogComponent } from './component/dialogs/app-error-dialog/app-error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { EditProjectComponent } from './component/dialogs/edit-project/edit-proj
     WindowComponent,
     ImportGroupsComponent,
     EditTechnologyComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    AppErrorDialogComponent
   ],
   imports: [
     HttpClientModule,

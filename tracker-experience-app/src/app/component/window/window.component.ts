@@ -1,10 +1,12 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, inject, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Group} from "../../data/group";
 import {STEPPER_GLOBAL_OPTIONS, StepperSelectionEvent} from "@angular/cdk/stepper";
 import {MatStepper} from "@angular/material/stepper";
 import {ElectronService} from "../../service/electron/electron.service";
 import {Project} from "../../data/Project";
+import {MatDialog} from "@angular/material/dialog";
+import {AppErrorDialogComponent} from "../dialogs/app-error-dialog/app-error-dialog.component";
 
 @Component({
   selector: 'app-window',
@@ -24,15 +26,16 @@ export class WindowComponent implements OnInit{
   importProjects!:FormGroup;
   private group: Group[] = [];
   private projects: Project[] = [];
+  readonly dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.importProjects = this._formBuilder.group({
-      period: new FormControl('', [Validators.required]),
-      technologies: new FormControl('', [Validators.required])
+      period: new FormControl(''),
+      technologies: new FormControl('')
     });
     this.importGroup = this._formBuilder.group({
-      groupName: new FormControl('', [Validators.required]),
-      technologies: new FormControl('', [Validators.required])
+      groupName: new FormControl(''),
+      technologies: new FormControl('')
     });
     this._electronService.onInit();
   }
@@ -50,8 +53,10 @@ export class WindowComponent implements OnInit{
   }
 
   onSelectionChange($event: StepperSelectionEvent) {
+    this._checkImportedTechnologies();
+    this._checkImportedProject();
     if ($event.selectedIndex === 2) {  // Index of the last step
-      if (!this.importGroup.valid || !this.importProjects.valid) {
+      if (!this.isValid()) {
         this.importGroup.markAllAsTouched();
         this.importProjects.markAllAsTouched();
         setTimeout(() => {
@@ -75,4 +80,41 @@ export class WindowComponent implements OnInit{
       this._electronService.getMessage();
     }
   }
+
+  isValid() {
+    if (!this._checkImportedTechnologies() ||
+        !this._checkImportedProject()) {
+      this.showErrorDialog('Technologies and projects list should not be empty!')
+      return false;
+    }
+    return true;
+  }
+
+  private _checkImportedTechnologies() {
+    if (this.group.length == 0) {
+      this.importGroup.setErrors({'required': true});
+      return false;
+    }
+    return true;
+  }
+
+  private _checkImportedProject() {
+    if (this.projects.length == 0) {
+      this.importProjects.setErrors({'required': true});
+      return false;
+    }
+    return true;
+  }
+
+  showErrorDialog(message: string): void {
+    const dialogRef = this.dialog.open(AppErrorDialogComponent, {
+      width: '400px',
+      data: { message }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 }
