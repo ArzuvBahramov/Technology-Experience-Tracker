@@ -28,13 +28,22 @@
   <mat-card style="flex: 1;  height: 80vh; overflow-y: auto;">
     <mat-card-content>
       <mat-list *ngFor="let project of projects">
-        <mat-list-item>
-          <span matListItemTitle style="font-weight: bold">{{project.period}}</span>
-        </mat-list-item>
-        <mat-list-item>
-          <span matListItemLine>{{project.technologies}}</span>
-        </mat-list-item>
+        <div class="group-item">
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <span matLine style="font-weight: bold">{{ project.period }}</span>
+              <button mat-icon-button (click)="editProject(project)" class="mat-list-button">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteProject(project)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemLine>{{project.technologies}}</span>
+          </mat-list-item>
+        </div>
       </mat-list>
     </mat-card-content>
   </mat-card>
-</div>

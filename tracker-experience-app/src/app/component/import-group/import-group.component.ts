@@ -4,7 +4,7 @@ import {Group} from "../../data/group";
 import {group} from "@angular/animations";
 import {MatDialog} from "@angular/material/dialog";
 import {ImportGroupsComponent} from "../dialogs/import-groups/import-groups.component";
-import {EditTechnologyComponent} from "../dialogs/technology/edit-technology.component";
+import {EditTechnologyComponent} from "../dialogs/edit-technology/edit-technology.component";
 
 @Component({
   selector: 'app-import-group',
@@ -60,6 +60,7 @@ export class ImportGroupComponent implements OnInit{
         group.name = result.name;
         group.technologies = result.technologies;
       }
+      this.outGroup.emit(this.groups);
     });
   }
 

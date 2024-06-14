@@ -49,8 +49,8 @@ import {MatDivider} from "@angular/material/divider";
 import {MatList, MatListItem, MatListItemTitle} from "@angular/material/list";
 import { ImportGroupsComponent } from './component/dialogs/import-groups/import-groups.component';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
-import { EditTechnologyComponent } from './component/dialogs/technology/edit-technology.component';
-import { ProjectComponent } from './component/dialogs/project/project.component';
+import { EditTechnologyComponent } from './component/dialogs/edit-technology/edit-technology.component';
+import { EditProjectComponent } from './component/dialogs/edit-project/edit-project.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,7 @@ import { ProjectComponent } from './component/dialogs/project/project.component'
     WindowComponent,
     ImportGroupsComponent,
     EditTechnologyComponent,
-    ProjectComponent
+    EditProjectComponent
   ],
   imports: [
     HttpClientModule,
