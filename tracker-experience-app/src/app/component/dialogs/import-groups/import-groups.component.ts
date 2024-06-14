@@ -1,7 +1,7 @@
 import {Component, inject, model} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
-export interface GroupTechnologies {
+interface GroupTechnologies {
   technologies: string
 }
 @Component({

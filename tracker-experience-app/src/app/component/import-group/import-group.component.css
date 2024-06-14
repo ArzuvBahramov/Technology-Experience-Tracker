@@ -20,3 +20,16 @@
   width: 100%;
   height: 100%;
 }
+
+.group-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+}
+
+.mat-list-button {
+  padding-right: 16px;
+}
+
+.mat-list-button {
+  margin-left: auto;
+}

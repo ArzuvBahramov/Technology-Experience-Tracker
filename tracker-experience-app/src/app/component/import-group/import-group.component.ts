@@ -4,6 +4,7 @@ import {Group} from "../../data/group";
 import {group} from "@angular/animations";
 import {MatDialog} from "@angular/material/dialog";
 import {ImportGroupsComponent} from "../dialogs/import-groups/import-groups.component";
+import {EditTechnologyComponent} from "../dialogs/technology/edit-technology.component";
 
 @Component({
   selector: 'app-import-group',
@@ -45,6 +46,29 @@ export class ImportGroupComponent implements OnInit{
   removeAll() {
     this.groups = [];
     this.outGroup.emit(this.groups)
+  }
+
+  editGroup(group: Group) {
+    const technologies = group.technologies;
+    const name = group.name
+    const dialogRef = this.dialog.open(EditTechnologyComponent, {
+      data: {name: name, technologies: technologies},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        group.name = result.name;
+        group.technologies = result.technologies;
+      }
+    });
+  }
+
+  deleteGroup(group: Group) {
+    const index = this.groups.findIndex(g => g === group);
+    if (index !== -1) {
+      this.groups.splice(index, 1);
+      this.outGroup.emit(this.groups);
+    }
   }
 
   openDialog(): void {

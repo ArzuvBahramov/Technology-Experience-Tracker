@@ -42,14 +42,14 @@ import {
   MatDatepickerModule,
   MatDatepickerToggle
 } from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MatLine, MatNativeDateModule} from "@angular/material/core";
 import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocomplete";
 import {MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious} from "@angular/material/stepper";
 import {MatDivider} from "@angular/material/divider";
 import {MatList, MatListItem, MatListItemTitle} from "@angular/material/list";
 import { ImportGroupsComponent } from './component/dialogs/import-groups/import-groups.component';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
-import { TechnologyComponent } from './component/dialogs/technology/technology.component';
+import { EditTechnologyComponent } from './component/dialogs/technology/edit-technology.component';
 import { ProjectComponent } from './component/dialogs/project/project.component';
 
 @NgModule({
@@ -59,7 +59,7 @@ import { ProjectComponent } from './component/dialogs/project/project.component'
     ImportProjectComponent,
     WindowComponent,
     ImportGroupsComponent,
-    TechnologyComponent,
+    EditTechnologyComponent,
     ProjectComponent
   ],
   imports: [
@@ -115,7 +115,8 @@ import { ProjectComponent } from './component/dialogs/project/project.component'
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
-    MatDialogTitle
+    MatDialogTitle,
+    MatLine
   ],
   providers: [
     provideClientHydration(),

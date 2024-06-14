@@ -20,26 +20,40 @@
           </div>
         </section>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-button class="add-button-row" type="submit">ADD</button>
-      </mat-card-actions>
-      <mat-card-actions>
-        <button mat-button class="add-button-row" type="button" (click)="addAllTechnologies()">ADD ALL</button>
-      </mat-card-actions>
-      <mat-card-actions>
-        <button mat-button class="add-button-row" type="button" (click)="removeAll()">Remove all</button>
-      </mat-card-actions>
+      <div style="display: flex">
+        <mat-card-actions style="flex: 0;">
+          <button mat-button class="add-button-row" type="submit">ADD</button>
+        </mat-card-actions>
+        <mat-card-actions style="flex: 1">
+          <button mat-button class="add-button-row" type="button" (click)="addAllTechnologies()">ADD ALL</button>
+        </mat-card-actions>
+          <mat-card-actions style="flex: 1">
+          <button mat-fab extended="true" class="add-button-row" type="button" (click)="removeAll()">
+            <mat-icon>delete</mat-icon>REMOVE ALL
+          </button>
+        </mat-card-actions>
+      </div>
     </form>
   </mat-card>
   <mat-card style="flex: 1;  height: 80vh; overflow-y: auto;">
     <mat-card-content>
       <mat-list *ngFor="let group of groups">
-        <mat-list-item>
-          <span matListItemTitle style="font-weight: bold">{{group.name}}</span>
-        </mat-list-item>
-        <mat-list-item>
-          <span matListItemLine>{{group.technologies}}</span>
-        </mat-list-item>
+        <div class="group-item">
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <span matLine style="font-weight: bold">{{ group.name }}</span>
+              <button mat-icon-button (click)="editGroup(group)" class="mat-list-button">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteGroup(group)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemLine>{{group.technologies}}</span>
+          </mat-list-item>
+        </div>
       </mat-list>
     </mat-card-content>
   </mat-card>
