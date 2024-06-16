@@ -9,6 +9,11 @@ import {MatDialog} from "@angular/material/dialog";
 import {AppErrorDialogComponent} from "../dialogs/app-error-dialog/app-error-dialog.component";
 import {TechnologySkills} from "../../data/TechnologySkills";
 import {TechnologySkillsMessage} from "../../data/response/TechnologySkillsMessage";
+import {MissingTechnologyInHeader, MissingTechnologyInProjects} from "../../data/MissingTechnology";
+import {
+  MissingTechnologyInHeaderMessage,
+  MissingTechnologyInProjectsMessage
+} from "../../data/response/MissingTechnology";
 
 @Component({
   selector: 'app-window',
@@ -31,6 +36,8 @@ export class WindowComponent implements OnInit{
   readonly dialog = inject(MatDialog);
   matrix: string = '';
   technologySkills!: TechnologySkills[];
+  missingTechnologiesInHeader!: MissingTechnologyInHeader[];
+  missingTechnologiesInProjects!: MissingTechnologyInProjects[];
 
   ngOnInit(): void {
     this.importProjects = this._formBuilder.group({
@@ -46,8 +53,9 @@ export class WindowComponent implements OnInit{
 
     if (this._electronService.isElectron()) {
       this._electronService.getMessage( (event: Electron.IpcMessageEvent, message:any) => {
-        let matrix = JSON.parse(message)['matrix']
-        this.technologySkills = matrix.reduce((acc: TechnologySkills[], item:TechnologySkillsMessage) => {
+        let matrix = JSON.parse(message);
+        let technologySkillsMatrix = matrix['matrix']
+        this.technologySkills = technologySkillsMatrix.reduce((acc: TechnologySkills[], item:TechnologySkillsMessage) => {
           let group = acc.find(g => g.group === item.GROUP);
           if (!group && item.GROUP.trim() !== '') {
             group = { group: item.GROUP, skills: [] };
@@ -61,7 +69,31 @@ export class WindowComponent implements OnInit{
           return acc;
         }, []);
         console.log(this.technologySkills);
+
+        let missingTechnologiesInHeaderMatrix = matrix['missing_groups_technologies_matrix'];
+        this.missingTechnologiesInHeader = missingTechnologiesInHeaderMatrix.reduce((acc: MissingTechnologyInHeader[], item:MissingTechnologyInHeaderMessage) => {
+          console.log(acc)
+          acc.push({
+            technology: item.TECHNOLOGY,
+            periods: this.formatPeriods(item.PERIODS),
+            experience_in_years: parseInt(item.EXPERIENCE)
+          });
+          return acc;
+        }, []);
+
+        let missingTechnologiesInProjectsMatrix = matrix['missing_technologies_matrix'];
+        this.missingTechnologiesInProjects = missingTechnologiesInProjectsMatrix.reduce((acc: MissingTechnologyInProjects[], item:MissingTechnologyInProjectsMessage) => {
+          let group = acc.find(g => g.group === item.GROUP);
+          if (!group && item.GROUP.trim() !== '') {
+            group = { group: item.GROUP, technologies: [] };
+            acc.push(group);
+          }
+          acc[acc.length-1].technologies.push(item["MISSING TECHNOLOGY"]);
+          return acc;
+        }, []);
+
       }, (event: Electron.IpcMessageEvent, message:any) => {
+        this.showErrorDialog(message);
         console.log('error: '+ message)
       });
     }
@@ -69,6 +101,19 @@ export class WindowComponent implements OnInit{
 
   constructor(private _formBuilder: FormBuilder,
               private _electronService: ElectronService) {
+  }
+
+  formatPeriods(periods: string[]): string {
+    if (periods.length === 0) return '';
+
+    // Sort periods in ascending order
+    const sortedPeriods = periods.sort();
+
+    // Get the first and last elements as the range
+    const firstPeriod = sortedPeriods[0];
+    const lastPeriod = sortedPeriods[sortedPeriods.length - 1];
+
+    return `${firstPeriod} - ${lastPeriod}`;
   }
 
   setGroup(data: Group[]) {
