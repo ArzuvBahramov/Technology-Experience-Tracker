@@ -46,7 +46,14 @@ import {MatLine, MatNativeDateModule} from "@angular/material/core";
 import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocomplete";
 import {MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious} from "@angular/material/stepper";
 import {MatDivider} from "@angular/material/divider";
-import {MatList, MatListItem, MatListItemTitle} from "@angular/material/list";
+import {
+  MatList,
+  MatListItem,
+  MatListItemIcon,
+  MatListItemLine,
+  MatListItemMeta,
+  MatListItemTitle
+} from "@angular/material/list";
 import { ImportGroupsComponent } from './component/dialogs/import-groups/import-groups.component';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import { EditTechnologyComponent } from './component/dialogs/edit-technology/edit-technology.component';
@@ -120,7 +127,10 @@ import { MatrixComponent } from './component/matrix/matrix.component';
     MatDialogActions,
     MatDialogClose,
     MatDialogTitle,
-    MatLine
+    MatLine,
+    MatListItemIcon,
+    MatListItemLine,
+    MatListItemMeta
   ],
   providers: [
     provideClientHydration(),

@@ -33,3 +33,7 @@
 .mat-list-button {
   margin-left: auto;
 }
+
+.full-width {
+  white-space: normal;
+}

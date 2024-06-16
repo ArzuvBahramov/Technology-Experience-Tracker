@@ -38,6 +38,8 @@ export class ImportProjectComponent implements OnInit{
     const period = project.period;
     const technologies = project.technologies
     const dialogRef = this.dialog.open(EditProjectComponent, {
+      width: '600px',
+      height: '500px',
       data: {period: period, technologies: technologies},
     });
     dialogRef.afterClosed().subscribe(result => {
