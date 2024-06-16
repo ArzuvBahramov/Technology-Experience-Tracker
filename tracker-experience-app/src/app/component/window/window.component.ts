@@ -39,7 +39,20 @@ export class WindowComponent implements OnInit{
   missingTechnologiesInHeader!: MissingTechnologyInHeader[];
   missingTechnologiesInProjects!: MissingTechnologyInProjects[];
 
+  constructor(private _formBuilder: FormBuilder,
+              private _electronService: ElectronService) {
+  }
+
   ngOnInit(): void {
+    this.initializeForms();
+    this._electronService.onInit();
+
+    if (this._electronService.isElectron()) {
+      this.setupElectronMessageHandlers();
+    }
+  }
+
+  private initializeForms(): void {
     this.importProjects = this._formBuilder.group({
       period: new FormControl(''),
       technologies: new FormControl('')
@@ -48,72 +61,25 @@ export class WindowComponent implements OnInit{
       groupName: new FormControl(''),
       technologies: new FormControl('')
     });
-    this._electronService.onInit();
+  }
 
-
-    if (this._electronService.isElectron()) {
-      this._electronService.getMessage( (event: Electron.IpcMessageEvent, message:any) => {
-        let matrix = JSON.parse(message);
-        let technologySkillsMatrix = matrix['matrix']
-        this.technologySkills = technologySkillsMatrix.reduce((acc: TechnologySkills[], item:TechnologySkillsMessage) => {
-          let group = acc.find(g => g.group === item.GROUP);
-          if (!group && item.GROUP.trim() !== '') {
-            group = { group: item.GROUP, skills: [] };
-            acc.push(group);
-          }
-          acc[acc.length-1].skills.push({
-            name: item.SKILLS,
-            experience_in_years: parseInt(item["EXPERIENCE IN YEARS"]),
-            last_used: parseInt(item["LAST USED"])
-          });
-          return acc;
-        }, []);
-        console.log(this.technologySkills);
-
-        let missingTechnologiesInHeaderMatrix = matrix['missing_groups_technologies_matrix'];
-        this.missingTechnologiesInHeader = missingTechnologiesInHeaderMatrix.reduce((acc: MissingTechnologyInHeader[], item:MissingTechnologyInHeaderMessage) => {
-          console.log(acc)
-          acc.push({
-            technology: item.TECHNOLOGY,
-            periods: this.formatPeriods(item.PERIODS),
-            experience_in_years: parseInt(item.EXPERIENCE)
-          });
-          return acc;
-        }, []);
-
-        let missingTechnologiesInProjectsMatrix = matrix['missing_technologies_matrix'];
-        this.missingTechnologiesInProjects = missingTechnologiesInProjectsMatrix.reduce((acc: MissingTechnologyInProjects[], item:MissingTechnologyInProjectsMessage) => {
-          let group = acc.find(g => g.group === item.GROUP);
-          if (!group && item.GROUP.trim() !== '') {
-            group = { group: item.GROUP, technologies: [] };
-            acc.push(group);
-          }
-          acc[acc.length-1].technologies.push(item["MISSING TECHNOLOGY"]);
-          return acc;
-        }, []);
-
-      }, (event: Electron.IpcMessageEvent, message:any) => {
+  private setupElectronMessageHandlers(): void {
+    this._electronService.getMessage(
+      (event: Electron.IpcMessageEvent, message: any) => {
+        this.handleMatrixMessage(message);
+      },
+      (event: Electron.IpcMessageEvent, message: any) => {
         this.showErrorDialog(message);
-        console.log('error: '+ message)
-      });
-    }
+        console.log('error: ' + message);
+      }
+    );
   }
 
-  constructor(private _formBuilder: FormBuilder,
-              private _electronService: ElectronService) {
-  }
-
-  formatPeriods(periods: string[]): string {
-    if (periods.length === 0) return '';
-
-    // Sort periods in ascending order
-    const sortedPeriods = periods.sort();
-
-    // Get the first and last elements as the range
-    const firstPeriod = sortedPeriods[0];
-    const lastPeriod = sortedPeriods[sortedPeriods.length - 1];
-
-    return `${firstPeriod} - ${lastPeriod}`;
+  private handleMatrixMessage(message: any): void {
+    let matrix = JSON.parse(message);
+    this.processTechnologySkillsMatrix(matrix['matrix']);
+    this.processMissingTechnologiesInHeaderMatrix(matrix['missing_groups_technologies_matrix']);
+    this.processMissingTechnologiesInProjectsMatrix(matrix['missing_technologies_matrix']);
   }
 
   setGroup(data: Group[]) {
@@ -141,7 +107,7 @@ export class WindowComponent implements OnInit{
     }
   }
 
-  sendData() {
+  private sendData() {
     const data = {
       groups: this.groups,
       projects: this.projects
@@ -177,7 +143,7 @@ export class WindowComponent implements OnInit{
     return true;
   }
 
-  showErrorDialog(message: string): void {
+  private showErrorDialog(message: string): void {
     const dialogRef = this.dialog.open(AppErrorDialogComponent, {
       width: '400px',
       data: { message }
@@ -190,5 +156,59 @@ export class WindowComponent implements OnInit{
 
   reset() {
     this.stepper.reset();
+  }
+
+  private formatPeriods(periods: string[]): string {
+    if (periods.length === 0) return '';
+
+    // Sort periods in ascending order
+    const sortedPeriods = periods.sort();
+
+    // Get the first and last elements as the range
+    const firstPeriod = sortedPeriods[0];
+    const lastPeriod = sortedPeriods[sortedPeriods.length - 1];
+
+    return `${firstPeriod} - ${lastPeriod}`;
+  }
+
+  private processTechnologySkillsMatrix(technologySkillsMatrix: any) {
+    this.technologySkills = technologySkillsMatrix.reduce((acc: TechnologySkills[], item:TechnologySkillsMessage) => {
+      let group = acc.find(g => g.group === item.GROUP);
+      if (!group && item.GROUP.trim() !== '') {
+        group = { group: item.GROUP, skills: [] };
+        acc.push(group);
+      }
+      acc[acc.length-1].skills.push({
+        name: item.SKILLS,
+        experience_in_years: parseInt(item["EXPERIENCE IN YEARS"]),
+        last_used: parseInt(item["LAST USED"])
+      });
+      return acc;
+    }, []);
+    console.log(this.technologySkills);
+  }
+
+  private processMissingTechnologiesInHeaderMatrix(missingTechnologiesInHeaderMatrix: any) {
+    this.missingTechnologiesInHeader = missingTechnologiesInHeaderMatrix.reduce((acc: MissingTechnologyInHeader[], item:MissingTechnologyInHeaderMessage) => {
+      console.log(acc)
+      acc.push({
+        technology: item.TECHNOLOGY,
+        periods: this.formatPeriods(item.PERIODS),
+        experience_in_years: parseInt(item.EXPERIENCE)
+      });
+      return acc;
+    }, []);
+  }
+
+  private processMissingTechnologiesInProjectsMatrix(missingTechnologiesInProjectsMatrix: any) {
+    this.missingTechnologiesInProjects = missingTechnologiesInProjectsMatrix.reduce((acc: MissingTechnologyInProjects[], item:MissingTechnologyInProjectsMessage) => {
+      let group = acc.find(g => g.group === item.GROUP);
+      if (!group && item.GROUP.trim() !== '') {
+        group = { group: item.GROUP, technologies: [] };
+        acc.push(group);
+      }
+      acc[acc.length-1].technologies.push(item["MISSING TECHNOLOGY"]);
+      return acc;
+    }, []);
   }
 }
