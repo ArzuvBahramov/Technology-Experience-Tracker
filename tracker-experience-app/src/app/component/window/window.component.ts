@@ -7,6 +7,8 @@ import {ElectronService} from "../../service/electron/electron.service";
 import {Project} from "../../data/Project";
 import {MatDialog} from "@angular/material/dialog";
 import {AppErrorDialogComponent} from "../dialogs/app-error-dialog/app-error-dialog.component";
+import {TechnologySkills} from "../../data/TechnologySkills";
+import {TechnologySkillsMessage} from "../../data/response/TechnologySkillsMessage";
 
 @Component({
   selector: 'app-window',
@@ -24,9 +26,11 @@ export class WindowComponent implements OnInit{
   @ViewChild('stepper') stepper!: MatStepper;
   importGroup!:FormGroup;
   importProjects!:FormGroup;
-  private group: Group[] = [];
+  private groups: Group[] = [];
   private projects: Project[] = [];
   readonly dialog = inject(MatDialog);
+  matrix: string = '';
+  technologySkills!: TechnologySkills[];
 
   ngOnInit(): void {
     this.importProjects = this._formBuilder.group({
@@ -38,6 +42,29 @@ export class WindowComponent implements OnInit{
       technologies: new FormControl('')
     });
     this._electronService.onInit();
+
+
+    if (this._electronService.isElectron()) {
+      this._electronService.getMessage( (event: Electron.IpcMessageEvent, message:any) => {
+        let matrix = JSON.parse(message)['matrix']
+        this.technologySkills = matrix.reduce((acc: TechnologySkills[], item:TechnologySkillsMessage) => {
+          let group = acc.find(g => g.group === item.GROUP);
+          if (!group && item.GROUP.trim() !== '') {
+            group = { group: item.GROUP, skills: [] };
+            acc.push(group);
+          }
+          acc[acc.length-1].skills.push({
+            name: item.SKILLS,
+            experience_in_years: parseInt(item["EXPERIENCE IN YEARS"]),
+            last_used: parseInt(item["LAST USED"])
+          });
+          return acc;
+        }, []);
+        console.log(this.technologySkills);
+      }, (event: Electron.IpcMessageEvent, message:any) => {
+        console.log('error: '+ message)
+      });
+    }
   }
 
   constructor(private _formBuilder: FormBuilder,
@@ -45,7 +72,7 @@ export class WindowComponent implements OnInit{
   }
 
   setGroup(data: Group[]) {
-    this.group = data;
+    this.groups = data;
   }
 
   setProject(data: Project[]) {
@@ -56,7 +83,7 @@ export class WindowComponent implements OnInit{
     this._checkImportedTechnologies();
     this._checkImportedProject();
     if ($event.selectedIndex === 2) {  // Index of the last step
-      if (!this.isValid()) {
+      if (!this._isValid()) {
         this.importGroup.markAllAsTouched();
         this.importProjects.markAllAsTouched();
         setTimeout(() => {
@@ -71,17 +98,16 @@ export class WindowComponent implements OnInit{
 
   sendData() {
     const data = {
-      groups: this.group,
+      groups: this.groups,
       projects: this.projects
     }
 
     if (this._electronService.isElectron()) {
       this._electronService.sendMessage('run-python', JSON.stringify(data))
-      this._electronService.getMessage();
     }
   }
 
-  isValid() {
+  _isValid() {
     if (!this._checkImportedTechnologies() ||
         !this._checkImportedProject()) {
       this.showErrorDialog('Technologies and projects list should not be empty!')
@@ -91,7 +117,7 @@ export class WindowComponent implements OnInit{
   }
 
   private _checkImportedTechnologies() {
-    if (this.group.length == 0) {
+    if (this.groups.length == 0) {
       this.importGroup.setErrors({'required': true});
       return false;
     }
@@ -117,4 +143,7 @@ export class WindowComponent implements OnInit{
     });
   }
 
+  reset() {
+    this.stepper.reset();
+  }
 }

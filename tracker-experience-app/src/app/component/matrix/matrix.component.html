@@ -1,0 +1,65 @@
+<mat-card style="width: 100%; height: 80vh; margin-right: 20px; overflow-y: auto;">
+  <div lang=en-BY style='tab-interval:36.0pt;word-wrap:break-word'>
+
+    <div class=WordSection1>
+
+      <p class="professional-skills"><b>Professional skills</b></p>
+
+      <p class="custom-paragraph"></p>
+
+      <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+             style='border-collapse:collapse;mso-yfti-tbllook:1184'>
+
+        <thead>
+          <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:29.25pt'>
+            <td class="table-header">
+              <p class="table-header-text-left"><b>SKILLS</b></p>
+            </td>
+            <td class="table-header">
+              <p class="table-header-text-center"></p>
+            </td>
+            <td class="table-header">
+              <p class="table-header-text-center"><b>EXPERIENCE IN YEARS</b></p>
+            </td>
+            <td class="table-header">
+              <p class="table-header-text-center"><b>LAST USED</b></p>
+            </td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes;height:1.0cm' *ngFor="let technology of technologySkills">
+            <td class="table-group-cell">
+              <p class="table-group-bold-red-text">{{technology.group}}</p>
+              <ng-container *ngFor="let skill of technology.skills; let i = index">
+                <p class="table-group-bold-red-text" *ngIf="i < technology.skills.length - 1"> </p>
+              </ng-container>
+            </td>
+
+            <td class="table-skills-cell">
+              <p class="table-skill-name" *ngFor="let skill of technology.skills">{{skill.name}}</p>
+            </td>
+
+            <td class="table-experience-cell">
+              <p class="table-experience-cell-centered-number" *ngFor="let skill of technology.skills">{{skill.experience_in_years}}</p>
+            </td>
+
+            <td class="table-last-used-cell">
+              <p class="table-last-used-centered-text" *ngFor="let skill of technology.skills">{{skill.last_used}}</p>
+            </td>
+
+            <td style="width: 182px;"></td>
+            <td style="width: 108px;"></td>
+            <td style="width: 189px;"></td>
+            <td style="width: 117px;"></td>
+          </tr>
+        </tbody>
+
+      </table>
+
+      <p class=MsoNormal></p><p>&nbsp;</p>
+
+    </div>
+
+  </div>
+</mat-card>

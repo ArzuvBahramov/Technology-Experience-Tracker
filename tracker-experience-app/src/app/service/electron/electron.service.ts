@@ -24,12 +24,12 @@ export class ElectronService {
     this.ips.send(chanel, json);
   }
 
-  getMessage() {
+  getMessage(handleSuccess: Function, handleError: Function) {
     this.ips.on('python-error', (event, message) => {
-      console.log('python-error: ' + message);
+      handleError.call(null, event, message);
     });
     this.ips.on('python-success', function (event, message) {
-      console.log('python-success: ' + message);
+      handleSuccess.call(null, event, message);
     });
   }
 

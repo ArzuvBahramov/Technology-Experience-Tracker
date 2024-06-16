@@ -52,6 +52,7 @@ import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from
 import { EditTechnologyComponent } from './component/dialogs/edit-technology/edit-technology.component';
 import { EditProjectComponent } from './component/dialogs/edit-project/edit-project.component';
 import { AppErrorDialogComponent } from './component/dialogs/app-error-dialog/app-error-dialog.component';
+import { MatrixComponent } from './component/matrix/matrix.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { AppErrorDialogComponent } from './component/dialogs/app-error-dialog/ap
     ImportGroupsComponent,
     EditTechnologyComponent,
     EditProjectComponent,
-    AppErrorDialogComponent
+    AppErrorDialogComponent,
+    MatrixComponent
   ],
   imports: [
     HttpClientModule,

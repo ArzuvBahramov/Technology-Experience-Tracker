@@ -17,9 +17,10 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
+      <app-matrix [technologySkills]="technologySkills"></app-matrix>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="reset()">Reset</button>
       </div>
     </mat-step>
   </mat-stepper>
