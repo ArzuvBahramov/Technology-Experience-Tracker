@@ -1,27 +1,65 @@
-# TrackerExperienceApp
+# Technology Experience Tracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+## Clone Repository and Switch to Develop Branch
 
-## Development server
+To get started, clone the repository and switch to the develop branch:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```sh
+git clone https://github.com/ArzuvBahramov/Technology-Experience-Tracker.git
+cd Technology-Experience-Tracker
+git checkout develop
+```
 
-## Code scaffolding
+## Requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Python 3
+- Node.js
+- npm
 
-## Build
+## Installation Guides
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Python 3
 
-## Running unit tests
+For instructions on installing Python 3, refer to this [guide on Medium](https://medium.com/@ingimareys93/how-to-install-python-3-6eae4d2d14f8).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Node.js
 
-## Running end-to-end tests
+For installing Node.js on macOS, Windows, and Linux, follow this [Ghost.org tutorial](https://ghost.org/tutorials/node/#:~:text=Install%20Node%20on%20macOS.%20To,version%20of%20Node%20that%E2%80%99s%20installed).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Setup Instructions
 
-## Further help
+1. Navigate to the `tracker-experience-app` folder:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    ```sh
+    cd tracker-experience-app
+    ```
+
+2. Open the `main.js` file and locate the `run-python` line:
+
+    ```js
+    ipcMain.on('run-python', (event, arg) => {
+        // existing code
+    });
+    ```
+
+    Update the `pythonPath` variable to 'Python' or to your virtual environment's Python path if using `venv`.
+
+3. Install the `pandas` module for Python:
+
+    ```sh
+    pip install pandas
+    ```
+
+4. Install the necessary Node.js packages:
+
+    ```sh
+    npm install
+    ```
+
+5. Build the Electron application:
+
+    ```sh
+    npm run electron-build
+    ```
+
+You are now ready to run the Technology Experience Tracker application. Enjoy!
