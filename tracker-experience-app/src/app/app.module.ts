@@ -60,6 +60,12 @@ import { EditTechnologyComponent } from './component/dialogs/edit-technology/edi
 import { EditProjectComponent } from './component/dialogs/edit-project/edit-project.component';
 import { AppErrorDialogComponent } from './component/dialogs/app-error-dialog/app-error-dialog.component';
 import { MatrixComponent } from './component/matrix/matrix.component';
+import { MatrixWindowComponent } from './component/matrix-window/matrix-window/matrix-window.component';
+import { HomeComponent } from './component/home/home.component';
+import { ResponseComponent } from './component/response/response.component';
+import { AboutComponent } from './component/about/about.component';
+import {CdkCopyToClipboard} from "@angular/cdk/clipboard";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -71,7 +77,11 @@ import { MatrixComponent } from './component/matrix/matrix.component';
     EditTechnologyComponent,
     EditProjectComponent,
     AppErrorDialogComponent,
-    MatrixComponent
+    MatrixComponent,
+    MatrixWindowComponent,
+    HomeComponent,
+    ResponseComponent,
+    AboutComponent
   ],
   imports: [
     HttpClientModule,
@@ -130,7 +140,9 @@ import { MatrixComponent } from './component/matrix/matrix.component';
     MatLine,
     MatListItemIcon,
     MatListItemLine,
-    MatListItemMeta
+    MatListItemMeta,
+    CdkCopyToClipboard,
+    MatProgressSpinner
   ],
   providers: [
     provideClientHydration(),
