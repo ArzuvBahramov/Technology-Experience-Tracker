@@ -70,7 +70,7 @@
           </div>
           <span matListItemLine class="full-width">{{responsibility.language}}: {{responsibility.description}}.</span>
         </mat-list-item>
-        <mat-divider></mat-divider>
+        <mat-divider *ngIf="responsibility.language === 'ru'"></mat-divider>
       </mat-list>
     </mat-card-content>
   </mat-card>

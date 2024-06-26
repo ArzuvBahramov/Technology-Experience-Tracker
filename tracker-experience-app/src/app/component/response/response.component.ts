@@ -74,6 +74,7 @@ export class ResponseComponent implements OnInit{
         error: (error) => {
           // Handle error here if not already handled in catchError
           console.error('Error in subscription:', error);
+          this.loadTechnologyResponsibilities = false;
           this.deleteTechnology(technology);
         }
       });
