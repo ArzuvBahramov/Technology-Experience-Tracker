@@ -1,0 +1,49 @@
+<h4 mat-dialog-title class="title">Add Project</h4>
+<mat-dialog-content class="mat-typography">
+  <div class="word-section">
+    <table class="aff">
+      <tbody>
+      <tr>
+        <td class="left-column">
+          <h1>
+            <b>DONATION SYSTEM</b>
+          </h1>
+          <p>
+            A suite of services dedicated to managing donation files, offering functionalities such as uploading, mapping, transforming, importing files into the system, and executing subsequent processing tasks.
+          </p>
+        </td>
+        <td class="right-column">
+          <h2>Project roles</h2>
+          <p>Software Engineer</p>
+
+          <h2>Period</h2>
+          <p>06.2022 – till now</p>
+
+          <h2>Responsibilities</h2>
+          <ul>
+            <li><span>Enriching the microservice architecture with Java-based solutions;</span></li>
+            <li><span>Automating build processes including compiling, testing, and code analysis;</span></li>
+            <li><span>Implementing data storage solutions using S3;</span></li>
+            <li><span>Leveraging messaging systems like Apache Kafka to optimize service communication;</span></li>
+            <li><span>Leveraging serverless computing for scalable and cost-effective solutions;</span></li>
+            <li><span>Managing database schema evolution with Flyway scripts;</span></li>
+            <li><span>Enhancing data access performance with Hibernate ORM;</span></li>
+            <li><span>Ensuring reliable and reproducible testing environments;</span></li>
+            <li><span>Creating comprehensive documentation using OpenAPI for backend services;</span></li>
+            <li><span>Conducting code refactoring and bug fixing activities;</span></li>
+          </ul>
+
+          <h2>Environment</h2>
+          <p>
+            Java(17), JavaScript, TypeScript, Spring (Core, Boot, Data, MVC, Security, Cloud), React, Jest, HTML, CSS, JPA, Hibernate, Maven, REST, PostgreSQL, MySQL, OpenAPI, Postman, Apache Kafka, Docker, Docker-Compose, AWS (EC2, S3, CloudWatch, API Gateway, Cloud Formation, Lambda, RDS), JUnit, Mockito, TestContainers, FlyWay, GitHub, GitHub Actions, Jira, Git.
+          </p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="onSaveClick()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,71 @@
+.title {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+/* Font Definitions */
+.word-section {
+  font-family: 'Mulish', sans-serif;
+  color: #353535;
+  width: 100%;
+  max-width: 718px;
+}
+
+.word-section table.aff {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.word-section td {
+  padding: 20px;
+  border: 1px solid white;
+  vertical-align: top;
+}
+
+.word-section .left-column {
+  width: 40%;
+  border-right: 1px solid #C32B3B;
+}
+
+.word-section .right-column {
+  width: 60%;
+  border-left: 1px solid #C32B3B;
+}
+
+.word-section h2 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #353535;
+  margin-bottom: 3px;
+  line-height: 1;
+}
+
+.word-section h1 {
+  font-size: 14px;
+  color: #C63031;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.word-section p {
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.word-section ul {
+  font-size: 14px;
+  list-style-type: disc;
+  margin: 10px 0 10px 20px;
+  padding: 0;
+}
+
+.word-section ul li {
+  line-height: 1.3;
+  color: #C63031;
+}
+
+.word-section ul li span {
+  color: #353535;
+}

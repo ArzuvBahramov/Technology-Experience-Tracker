@@ -40,8 +40,16 @@
       </mat-list>
     </div>
   </mat-card>
-  <mat-card style="flex: 1;  height: 85vh; overflow-y: auto; margin: 20px;">
-    <mat-card-content *ngIf="!selectedTechnology">
+  <mat-card style="flex: 1;  height: 85vh; margin: 20px;">
+    <div *ngIf="selectedTechnology">
+      <mat-card-subtitle style="font-size: 14px">
+        <mat-card-actions style="flex: 0;">
+          <button mat-button class="add-button-row" (click)="selectedBack()">Back</button>
+          <span><b>Technology</b>: {{selectedTechnology.name}}, <b>Info: </b>{{selectedTechnology.info}}</span>
+        </mat-card-actions>
+      </mat-card-subtitle>
+    </div>
+    <mat-card-content *ngIf="!selectedTechnology" style="overflow-y: auto;">
       <mat-list *ngFor="let technologyResponse of Array.from(this.technologyResponses.keys())">
         <mat-list-item lines="5" (click)="selectTechnology(technologyResponse)">
           <span matListItemTitle><b>{{this.technologyResponses.get(technologyResponse)?.name}}</b>, was made in: {{this.technologyResponses.get(technologyResponse)?.made}}</span>
@@ -56,11 +64,7 @@
       </mat-list>
       <mat-spinner *ngIf="loadTechnologyResponsibilities"></mat-spinner>
     </mat-card-content>
-    <mat-card-content *ngIf="selectedTechnology">
-      <mat-card-actions style="flex: 0;">
-        <button mat-button class="add-button-row" (click)="selectedBack()">Back</button>
-        <span style="font-size: 14px"><b>Technology</b>: {{selectedTechnology.name}}, <b>Info: </b>{{selectedTechnology.info}}</span>
-      </mat-card-actions>
+    <mat-card-content *ngIf="selectedTechnology" style="overflow-y: auto;">
       <mat-list *ngFor="let responsibility of this.selectedTechnology.responsibilities" (click)="openSnackBarCopyMessage()">
         <mat-list-item lines="5" [cdkCopyToClipboard]="responsibility.description">
           <div matListItemMeta>

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Project} from "../../data/Project";
+import {TrackerExperience} from "../../data/TrackerExperience";
 import {EditTechnologyComponent} from "../dialogs/edit-technology/edit-technology.component";
 import {MatDialog} from "@angular/material/dialog";
 import {EditProjectComponent} from "../dialogs/edit-project/edit-project.component";
@@ -12,8 +12,8 @@ import {group} from "@angular/animations";
   styleUrl: './import-project.component.css'
 })
 export class ImportProjectComponent implements OnInit{
-  projects: Project[] = [];
-  @Output() outProject = new EventEmitter<Project[]>
+  projects: TrackerExperience[] = [];
+  @Output() outProject = new EventEmitter<TrackerExperience[]>
   @Input() importProjects!: FormGroup;
   readonly dialog = inject(MatDialog);
 
@@ -25,7 +25,7 @@ export class ImportProjectComponent implements OnInit{
 
   onSubmit() {
     if (this.importProjects.valid) {
-      const project: Project = {
+      const project: TrackerExperience = {
         period: this.importProjects.get('period')?.value,
         technologies: this.importProjects.get('technologies')?.value,
       };
@@ -34,7 +34,7 @@ export class ImportProjectComponent implements OnInit{
     }
   }
 
-  editProject(project: Project) {
+  editProject(project: TrackerExperience) {
     const period = project.period;
     const technologies = project.technologies
     const dialogRef = this.dialog.open(EditProjectComponent, {
@@ -53,7 +53,7 @@ export class ImportProjectComponent implements OnInit{
     });
   }
 
-  deleteProject(project: Project) {
+  deleteProject(project: TrackerExperience) {
     const index = this.projects.findIndex(p => p === project);
     if (index !== -1) {
       this.projects.splice(index, 1);

@@ -66,6 +66,8 @@ import { ResponseComponent } from './component/response/response.component';
 import { AboutComponent } from './component/about/about.component';
 import {CdkCopyToClipboard} from "@angular/cdk/clipboard";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import { SvComponent } from './component/sv/sv.component';
+import { AddProjectComponent } from './component/dialogs/add-project/add-project.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     MatrixWindowComponent,
     HomeComponent,
     ResponseComponent,
-    AboutComponent
+    AboutComponent,
+    SvComponent,
+    AddProjectComponent
   ],
   imports: [
     HttpClientModule,

@@ -2,7 +2,7 @@ import {Component, inject, ViewChild} from '@angular/core';
 import {MatStepper} from "@angular/material/stepper";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Group} from "../../../data/group";
-import {Project} from "../../../data/Project";
+import {TrackerExperience} from "../../../data/TrackerExperience";
 import {MatDialog} from "@angular/material/dialog";
 import {TechnologySkills} from "../../../data/TechnologySkills";
 import {MissingTechnologyInHeader, MissingTechnologyInProjects} from "../../../data/MissingTechnology";
@@ -32,7 +32,7 @@ export class MatrixWindowComponent {
   importGroup!:FormGroup;
   importProjects!:FormGroup;
   private groups: Group[] = [];
-  private projects: Project[] = [];
+  private projects: TrackerExperience[] = [];
   readonly dialog = inject(MatDialog);
   matrix: string = '';
   technologySkills!: TechnologySkills[];
@@ -86,7 +86,7 @@ export class MatrixWindowComponent {
     this.groups = data;
   }
 
-  setProject(data: Project[]) {
+  setProject(data: TrackerExperience[]) {
     this.projects = data;
   }
 

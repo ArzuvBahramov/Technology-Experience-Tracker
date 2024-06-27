@@ -1,0 +1,114 @@
+<div style="display: flex;">
+  <mat-card style="width: 400px; height: 85vh; margin: 20px;">
+    <form [formGroup]="projectFormGroup" (ngSubmit)="onSubmit()">
+      <mat-card-header>
+        <mat-card-subtitle><h4>INPUT PROJECT</h4></mat-card-subtitle>
+      </mat-card-header>
+      <div style="display: flex">
+        <mat-card-actions style="flex: 0;">
+          <button mat-fab extended="true" class="add-button-row" type="submit">
+            <mat-icon>addchart</mat-icon>Add</button>
+        </mat-card-actions>
+        <mat-card-actions style="flex: 1">
+          <button mat-fab extended="true" class="add-button-row" type="button" (click)="pasteProjects()">
+            <mat-icon>content_paste</mat-icon>Paste
+          </button>
+        </mat-card-actions>
+        <mat-card-actions style="flex: 2">
+          <button mat-fab extended="true" class="add-button-row" type="button" (click)="removeAll()">
+            <mat-icon>delete</mat-icon>Remove all
+          </button>
+        </mat-card-actions>
+      </div>
+      <mat-divider></mat-divider>
+    </form>
+
+    <div>
+      <mat-card-header>
+        <mat-card-subtitle><h4>Transform to One Page</h4></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions style="flex: 0">
+        <button mat-fab extended="true" class="add-button-row" type="button" (click)="transformProjects()">
+          <mat-icon>transform</mat-icon>Transform
+        </button>
+      </mat-card-actions>
+      <mat-divider></mat-divider>
+    </div>
+    <div>
+      <mat-card-header>
+        <mat-card-subtitle><h4>Translate</h4></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions style="flex: 0">
+        <button mat-fab extended="true" class="add-button-row" type="button" (click)="translateProjects()">
+          <mat-icon>translate</mat-icon>Translate
+        </button>
+      </mat-card-actions>
+      <mat-divider></mat-divider>
+    </div>
+    <div>
+      <mat-card-header>
+        <mat-card-subtitle><h4>Validate</h4></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions style="flex: 0">
+        <button mat-fab extended="true" class="add-button-row" type="button" (click)="validateProjects()">
+          <mat-icon>verified</mat-icon>Validate
+        </button>
+      </mat-card-actions>
+      <mat-divider></mat-divider>
+    </div>
+    <div>
+      <mat-card-header>
+        <mat-card-subtitle><h4>Tracker Experience</h4></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions style="flex: 0">
+        <button mat-fab extended="true" class="add-button-row" type="button" (click)="trackerExperienceProjects()">
+          <mat-icon>track_changes</mat-icon>Tracker
+        </button>
+      </mat-card-actions>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-card>
+  <mat-card style="flex: 1;  height: 85vh; margin: 20px;">
+    <mat-card-header>
+      <mat-card-subtitle><H3>Projects</H3></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="overflow-y: auto;">
+
+      <div class="word-section">
+        <table class="aff">
+          <tbody>
+            <tr *ngFor="let project of projects">
+              <td class="left-column">
+                <h1>
+                  <b>{{project.name}}</b>
+                </h1>
+                <p>
+                  {{project.description}}
+                </p>
+              </td>
+              <td class="right-column">
+                <h2>Project roles</h2>
+                <p>{{project.role}}</p>
+
+                <h2>Period</h2>
+                <p>{{project.period}}</p>
+
+                <h2>Responsibilities</h2>
+                <ul>
+                  <li *ngFor="let responsibility of project.responsibilities">
+                    <span>{{responsibility}}</span>
+                  </li>
+                </ul>
+
+                <h2>Environment</h2>
+                <p>
+                  <span>{{project.environment.join(", ")}}</span>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
