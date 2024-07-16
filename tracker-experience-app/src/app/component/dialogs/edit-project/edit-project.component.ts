@@ -1,6 +1,6 @@
 import {Component, inject, model} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Project} from "../../../data/Project";
+import {TrackerExperience} from "../../../data/TrackerExperience";
 
 @Component({
   selector: 'app-project',
@@ -9,7 +9,7 @@ import {Project} from "../../../data/Project";
 })
 export class EditProjectComponent {
   readonly dialogRef = inject(MatDialogRef<EditProjectComponent>);
-  readonly data = inject<Project>(MAT_DIALOG_DATA);
+  readonly data = inject<TrackerExperience>(MAT_DIALOG_DATA);
   technologies = model(this.data.technologies);
   period = model(this.data.period);
 
@@ -17,7 +17,7 @@ export class EditProjectComponent {
     this.dialogRef.close();
   }
 
-  onSaveClick(): Project {
+  onSaveClick(): TrackerExperience {
     return {
       period: this.period(),
       technologies: this.technologies()
