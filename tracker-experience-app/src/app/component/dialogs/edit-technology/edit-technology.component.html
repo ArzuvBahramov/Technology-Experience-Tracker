@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Edit technologies</h2>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <mat-form-field class="example-full-width" style="width: 100%">
+      <mat-label>Group Name</mat-label>
+      <input matInput placeholder="Ex. Backend" [(ngModel)]="name">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width" style="width: 100%">
+      <mat-label>Technologies</mat-label>
+      <textarea matInput placeholder="Ex. Spring ..." [(ngModel)]="technologies" style="min-height: 200px"></textarea>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="onSaveClick()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

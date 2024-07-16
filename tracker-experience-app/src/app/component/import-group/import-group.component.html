@@ -1,0 +1,57 @@
+<div style="display: flex;">
+  <mat-card style="width: 500px; height: 450px; margin-right: 20px;">
+    <form [formGroup]="importGroup" (ngSubmit)="onSubmit()">
+      <mat-card-header>
+        <mat-card-subtitle>Input group name & technologies</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <section>
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Group Name</mat-label>
+              <input matInput placeholder="Ex. Backend" formControlName="groupName">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Technologies</mat-label>
+              <textarea matInput placeholder="Ex. Spring ..." formControlName="technologies" class="mat-textarea"></textarea>
+            </mat-form-field>
+          </div>
+        </section>
+      </mat-card-content>
+      <div style="display: flex">
+        <mat-card-actions style="flex: 0;">
+          <button mat-button class="add-button-row" type="submit">ADD</button>
+        </mat-card-actions>
+        <mat-card-actions style="flex: 1">
+          <button mat-button class="add-button-row" type="button" (click)="addAllTechnologies()">ADD ALL</button>
+        </mat-card-actions>
+          <mat-card-actions style="flex: 1">
+          <button mat-fab extended="true" class="add-button-row" type="button" (click)="removeAll()">
+            <mat-icon>delete</mat-icon>REMOVE ALL
+          </button>
+        </mat-card-actions>
+      </div>
+    </form>
+  </mat-card>
+  <mat-card style="flex: 1;  height: 75vh; overflow-y: auto;">
+    <mat-card-content>
+      <mat-list *ngFor="let group of groups">
+        <mat-list-item lines="5">
+          <span matListItemTitle><b>{{group.name}}</b></span>
+          <div matListItemMeta>
+            <button mat-icon-button (click)="editGroup(group)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteGroup(group)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <span matListItemLine class="full-width">{{group.technologies}}</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
